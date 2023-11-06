@@ -1,0 +1,27 @@
+.centrar-contenido {
+    display: flex;
+    flex-direction: column; /* alinea vertical */
+    align-items: center; /*alinnea horizontalmente */
+    justify-content: center;/* lo centra*/
+    /*height: 100vh;  Ocupa el 100% de la altura de la ventana */
+}
+.animal-img {
+    
+    max-width: 550px; /* Define el ancho máximo en píxeles */
+    max-height: 400px; /* Define la altura máxima en píxeles */
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    padding: 8px 10px;
+    /*margin-top: 20px;*/
+    border: 4px solid rgba(255, 255, 255, 0.568);
+    background-color: rgb(10, 234, 174);/**/
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    box-shadow: -3px 5px 15px 0 rgba(255, 255, 255, 0.815);
+}

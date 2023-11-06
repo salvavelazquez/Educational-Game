@@ -1,0 +1,32 @@
+[
+    {
+      "id": 0,
+      "name": "cat",
+      "url": "img/cat.png"
+    },
+    {
+      "id": 1,
+      "name": "dog",
+      "url": "img/dog.png"
+    },
+    {
+      "id": 2,
+      "name": "cow",
+      "url": "img/cow.png"
+    },
+    {
+      "id": 3,
+      "name": "lion",
+      "url": "img/lion.png"
+    },
+    {
+      "id": 4,
+      "name": "giraffe",
+      "url": "img/giraffe.png"
+    },
+    {
+      "id": 5,
+      "name": "horse",
+      "url": "img/horse.png"
+    }
+  ]

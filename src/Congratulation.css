@@ -1,0 +1,7 @@
+.center-content {
+    display: flex;
+    flex-direction: column; /* alinea vertical */
+    align-items: center; /*alinnea horizontalmente */
+    justify-content: center;/* lo centra*/
+    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+}
