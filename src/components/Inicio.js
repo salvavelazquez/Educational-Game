@@ -5,23 +5,39 @@ import '../Inicio.css';
 import Felicitaciones from './Felicitaciones';
 
 function Inicio() {
+    /************** */
+    const [users, setUsers] = useState([]);
+    const [turn,setTurn] = useState(1);
+    /*************** */
     const [nombreJugador, setNombreJugador] = useState('');
     const [mostrarJuego, setMostrarJuego] = useState(false);
     const [puntaje, setPuntaje] = useState(0);
     const [mostrarFelicitaciones, setMostrarFelicitaciones] = useState(false);
     const [rondaActual, setRondaActual] = useState(1);
-
+    
     const manejarClickJugar = (nombre) => {
         setNombreJugador(nombre);
         setMostrarJuego(true);
         setPuntaje(0);
         setMostrarFelicitaciones(false);
+
+        const newUser = { id: turn, name: nombre, score: 0 };
+        setUsers([...users, newUser]);
     };
 
     const alTerminar = (puntaje) => {
         setPuntaje(puntaje);
-        setMostrarJuego(false);
-        setMostrarFelicitaciones(true);
+        
+        users[turn-1].score = puntaje;
+        setRondaActual(1);
+        setTurn(turn+1);
+        if(turn <= 1){
+            setMostrarJuego(false);
+            setMostrarFelicitaciones(false);
+        }else{
+            setMostrarJuego(false);
+            setMostrarFelicitaciones(true);
+        }
     };
 
     if (!mostrarJuego && !mostrarFelicitaciones) {
@@ -30,7 +46,7 @@ function Inicio() {
                 <h1 className="title1">Enter your Name</h1>
                 <input
                     type="text"
-                    placeholder="The child's name"
+                    placeholder={`Player ${turn}`}
                     onChange={(e) => setNombreJugador(e.target.value)}
                 />
                 <button className="button-init" onClick={() => manejarClickJugar(nombreJugador)}>Play</button>
@@ -39,19 +55,7 @@ function Inicio() {
     } else if (mostrarJuego) {
         return (
             <div>
-            <section className='Animacion'>
-            <div className='Decoracion'></div>
-            <div className='Decoracion'></div>
-            <div className='Decoracion'></div>
-            <div className='Decoracion'></div>
-            <div className='Decoracion'></div>
-            <div className='Decoracion'></div>
-            <div className='Decoracion'></div>
-            <div className='Decoracion'></div>
-            <div className='Decoracion'></div>
-            <div className='Decoracion'></div>
-            <div className='Decoracion'></div>
-        </section>
+            
                 <Juego
                     nombreJugador={nombreJugador}
                     puntaje={puntaje}
@@ -59,15 +63,28 @@ function Inicio() {
                     alTerminar={alTerminar}
                     rondaActual={rondaActual}
                     setRondaActual={setRondaActual}
-
                 />
-                
+            
             </div>
         );
     } else if (mostrarFelicitaciones) {
         return (
+            
             <div>
-                <Felicitaciones nombreJugador={nombreJugador} puntaje={puntaje} />
+                <section className='Animacion'>
+                    <div className='Decoracion'></div>
+                    <div className='Decoracion'></div>
+                    <div className='Decoracion'></div>
+                    <div className='Decoracion'></div>
+                    <div className='Decoracion'></div>
+                    <div className='Decoracion'></div>
+                    <div className='Decoracion'></div>
+                    <div className='Decoracion'></div>
+                    <div className='Decoracion'></div>
+                    <div className='Decoracion'></div>
+                    <div className='Decoracion'></div>
+                </section>
+                <Felicitaciones nombreJugador={nombreJugador} puntaje={puntaje} users={users} />
             </div>
         );
     }
